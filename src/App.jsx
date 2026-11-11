@@ -1,17 +1,23 @@
+import { Link, Outlet } from 'react-router';
+import { useFleetSnapshot } from './api/FleetApiContext.jsx';
+import { paths } from './paths.js';
+
 export default function App() {
-    return (
-        <div className="app">
-            <header className="topbar">
-                <a href="#/" className="brand">Olivaw Fleet</a>
-            </header>
+  const snapshot = useFleetSnapshot();
 
-            <main className="page">
-                <p className="waiting">Waiting for the first robot to report…</p>
-            </main>
+  return (
+    <div className="app">
+      <header className="topbar">
+        <Link to={paths.home()} className="brand">Olivaw Fleet</Link>
+      </header>
 
-            <footer className="footer">
-                <p>Robots, network and server are simulated in the browser. See README.</p>
-            </footer>
-        </div>
-    );
+      {snapshot.robots.length === 0 ? (
+        <main className="page">
+          <p className="waiting">Waiting for the first robot to report…</p>
+        </main>
+      ) : (
+        <Outlet context={snapshot} />
+      )}
+    </div>
+  );
 }
