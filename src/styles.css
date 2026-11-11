@@ -1,0 +1,66 @@
+:root {
+  --bg: #e8ecef;
+  --surface: #ffffff;
+  --ink: #16212c;
+  --muted: #5a6876;
+  --line: #cdd5dc;
+  --accent: #1e5c96;
+
+  color-scheme: light;
+  font-family: 'Barlow', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #10161c;
+    --surface: #18212a;
+    --ink: #e4eaf0;
+    --muted: #95a3b1;
+    --line: #2c3946;
+    --accent: #6fa8dc;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); }
+a { color: var(--accent); }
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Shell */
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.875rem clamp(1rem, 3vw, 2rem);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.brand { font-weight: 700; font-size: 1.125rem; color: var(--ink); text-decoration: none; }
+.page {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 1.5rem clamp(1rem, 3vw, 2rem) 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+.footer {
+  padding: 1rem clamp(1rem, 3vw, 2rem);
+  color: var(--muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--line);
+}
+.footer p { margin: 0.125rem 0; }
+.waiting { color: var(--muted); margin: 0; }
